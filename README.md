@@ -2,5 +2,6 @@
 :)
 Hello!
 
+góra lodowa
 
 ## Moje repo
