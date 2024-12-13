@@ -27,4 +27,16 @@ def person_list(request):
     return render(request,
                   "myapp/person/list.html",
                   {'persons': persons})
+# dodajemy brakujący import na początku pliku (modyfikacja)
+from django.http import Http404, HttpResponse
 
+def person_detail(request, id):
+    # pobieramy konkretny obiekt Person
+    try:
+        person = Person.objects.get(id=id)
+    except Person.DoesNotExist:
+        raise Http404("Obiekt Person o podanym id nie istnieje")
+
+    return render(request,
+                  "myapp/person/detail.html",
+                  {'person': person})
